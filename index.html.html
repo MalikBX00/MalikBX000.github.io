@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Banco Minalba | Innovación y Sostenibilidad Financiera</title>
+    <!-- Google Fonts: Poppins moderna y limpia -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (gratuito para íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & VARIABLES CORPORATIVAS ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-esmeralda: #1E7A5A;      /* principal: botones, acentos, bordes */
+            --verde-claro-bg: #E0F2E9;      /* fondo sección beneficios */
+            --azul-medianoche: #0F1A2E;     /* navbar, footer, textos destacados */
+            --azul-medianoche-claro: #1F2A3C;
+            --blanco: #FFFFFF;
+            --gris-suave: #F8F9FC;
+            --sombra-card: 0 12px 28px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+            --sombra-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+            --border-radius: 1rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--blanco);
+            color: #1E2A3A;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        /* Contenedor general */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ---------- BARRA DE NAVEGACIÓN (AZUL MEDIANOCHE) ---------- */
+        .navbar {
+            background-color: var(--azul-medianoche);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--verde-esmeralda) 0%, #3ba07d 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        /* fallback blanco para navegadores */
+        .logo a span {
+            color: var(--blanco);
+            background: none;
+            -webkit-background-clip: unset;
+        }
+        .logo a {
+            color: var(--blanco);
+        }
+        .logo a i {
+            color: var(--verde-esmeralda);
+            margin-right: 6px;
+        }
+
+        /* Enlaces desktop */
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover {
+            color: var(--verde-esmeralda);
+        }
+
+        /* Menú hamburguesa (oculto en desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.7rem;
+            background: none;
+            border: none;
+            color: var(--blanco);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        /* ---------- SECCIÓN HERO ---------- */
+        .hero {
+            background: linear-gradient(145deg, #FFFFFF 0%, #F5FBF8 100%);
+            padding: 4rem 0 5rem 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--azul-medianoche);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--verde-esmeralda);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #2c3e44;
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-esmeralda);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(30,122,90,0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #166b4f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(30,122,90,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--verde-esmeralda);
+            color: var(--verde-esmeralda);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--verde-esmeralda);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-illustration i {
+            font-size: 12rem;
+            color: var(--verde-esmeralda);
+            opacity: 0.8;
+        }
+
+        /* ----- PRODUCTOS DESTACADOS (tarjetas) ----- */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--azul-medianoche);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title i {
+            color: var(--verde-esmeralda);
+            margin-right: 8px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: var(--border-radius);
+            padding: 2rem 1.8rem;
+            text-align: center;
+            transition: all 0.25s ease-in-out;
+            box-shadow: var(--sombra-card);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--verde-esmeralda);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--azul-medianoche);
+        }
+
+        .card p {
+            color: #4a5b6e;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            background: none;
+            border: none;
+            color: var(--verde-esmeralda);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .card-btn i {
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+        .card-btn:hover {
+            letter-spacing: 0.5px;
+            color: #0f5a42;
+        }
+
+        /* ----- SECCIÓN BENEFICIOS (verde claro) ----- */
+        .benefits-section {
+            background-color: var(--verde-claro-bg);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        .benefit-item i {
+            font-size: 2.8rem;
+            color: var(--verde-esmeralda);
+            margin-bottom: 1rem;
+        }
+        .benefit-item h4 {
+            font-size: 1.35rem;
+            color: var(--azul-medianoche);
+            margin-bottom: 0.6rem;
+        }
+        .benefit-item p {
+            color: #2c3e4e;
+            font-size: 0.95rem;
+        }
+
+        /* ----- SECCIÓN CONTACTO + MAPA (placeholder) ----- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: var(--azul-medianoche);
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #cfdfd7;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.2s;
+            outline: none;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--verde-esmeralda);
+            box-shadow: 0 0 0 3px rgba(30,122,90,0.2);
+        }
+        .btn-submit {
+            background-color: var(--verde-esmeralda);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #166b4f;
+            transform: scale(1.02);
+        }
+        .map-placeholder {
+            background: #eef3f0;
+            border-radius: 24px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-medianoche);
+            border: 1px solid #cddfd4;
+            box-shadow: var(--sombra-card);
+        }
+        .map-placeholder i {
+            font-size: 3.5rem;
+            color: var(--verde-esmeralda);
+            margin-bottom: 1rem;
+        }
+        .map-placeholder p {
+            font-weight: 500;
+        }
+
+        /* ----- FOOTER (azul medianoche) ----- */
+        .footer {
+            background-color: var(--azul-medianoche);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 1.5rem;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #cddfd4;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--verde-esmeralda);
+        }
+        .social-icons i {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            color: white;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .social-icons i:hover {
+            color: var(--verde-esmeralda);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a3a4a;
+            font-size: 0.85rem;
+            color: #b0c4d4;
+        }
+
+        /* ---------- MODALES ---------- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 26, 46, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeUp 0.3s ease;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-content h3 {
+            font-size: 1.8rem;
+            color: var(--azul-medianoche);
+            margin-bottom: 0.5rem;
+        }
+        .modal-content p {
+            margin-bottom: 1.5rem;
+            color: #5f6f82;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.4rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            color: var(--verde-esmeralda);
+        }
+        .modal .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .modal .btn-primary {
+            width: 100%;
+            justify-content: center;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* ---------- RESPONSIVE (menú hamburguesa y más) ---------- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--azul-medianoche);
+                padding: 1.5rem;
+                gap: 1.2rem;
+                text-align: center;
+                box-shadow: 0 15px 20px rgba(0,0,0,0.1);
+                border-top: 1px solid #263446;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-illustration i {
+                font-size: 7rem;
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-primary, .btn-outline {
+                text-align: center;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BARRA DE NAVEGACIÓN (AZUL MEDIANOCHE) -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="#"><i class="fas fa-landmark"></i> <span>Banco Minalba</span></a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- SECCIÓN HERO -->
+<section class="hero" id="inicio">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <h1>Banco Minalba – <span>Crece con seguridad y sostenibilidad</span></h1>
+            <p>Tasas verdes, transparencia total e innovación para tu futuro financiero. Abre tu cuenta en minutos.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="openSignupModalBtn">Abrir cuenta gratis</button>
+                <button class="btn-outline" id="openLoginModalBtn">Iniciar sesión</button>
+            </div>
+        </div>
+        <div class="hero-illustration">
+            <i class="fas fa-chart-line"></i>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTOS DESTACADOS (tarjetas) -->
+<section class="section" id="productos">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-star"></i> Productos que impulsan tu vida</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <i class="fas fa-credit-card"></i>
+                <h3>Cuenta Corriente Minalba</h3>
+                <p>Sin comisiones, débito gratis y transferencias ilimitadas. La cuenta que te da libertad.</p>
+                <button class="card-btn" data-product="Cuenta Corriente Minalba">Más información <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-gem"></i>
+                <h3>Tarjeta de Crédito Esmeralda</h3>
+                <p>Cashback del 1.5% en todas tus compras + millas acumulables. Sin anualidad el primer año.</p>
+                <button class="card-btn" data-product="Tarjeta de Crédito Esmeralda">Más información <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>Préstamos Personales</h3>
+                <p>Aprobación rápida, tasas verdes y sin papeleo. Financia proyectos con hasta 48 cuotas.</p>
+                <button class="card-btn" data-product="Préstamos Personales">Más información <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN BENEFICIOS / POR QUÉ ELEGIRNOS -->
+<section class="benefits-section section" id="beneficios">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-leaf"></i> ¿Por qué elegir Minalba?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item"><i class="fas fa-shield-alt"></i><h4>Seguridad 24/7</h4><p>Monitoreo avanzado y protección de tus datos.</p></div>
+            <div class="benefit-item"><i class="fas fa-mobile-alt"></i><h4>App móvil intuitiva</h4><p>Gestiona todo desde tu celular con facilidad.</p></div>
+            <div class="benefit-item"><i class="fas fa-headset"></i><h4>Atención al cliente 365 días</h4><p>Soporte real cuando más lo necesitas.</p></div>
+            <div class="benefit-item"><i class="fas fa-exchange-alt"></i><h4>Transferencias instantáneas</h4><p>Pix y transferencias gratuitas 24/7.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN DE CONTACTO + MAPA PLACEHOLDER -->
+<section class="section" id="contacto">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> Contáctanos</h2>
+        <div class="contact-grid">
+            <div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Nombre completo</label>
+                        <input type="text" id="contactName" placeholder="Ej. Laura Méndez" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" id="contactEmail" placeholder="tuemail@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea rows="3" id="contactMsg" placeholder="Déjanos tu consulta..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Oficina Central Minalba</strong></p>
+                <p>Av. de los Bosques 123, Centro Corporativo</p>
+                <p>📍 Santiago, Chile (Referencia)</p>
+                <small><i class="fas fa-clock"></i> Lunes a Viernes 9am - 6pm</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-links">
+                <a href="#">Aviso de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Defensoría del cliente</a>
+                <a href="dashboard_operador.html">Panel de Operador</a>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Banco Minalba – Todos los derechos reservados. Innovación financiera con compromiso sostenible.
+        </div>
+    </div>
+</footer>
+
+<!-- MODAL ABRIR CUENTA -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-close="signupModal">&times;</span>
+        <h3><i class="fas fa-user-plus"></i> Abrir cuenta gratis</h3>
+        <p>Únete a Banco Minalba en segundos. Comienza tu futuro financiero.</p>
+        <form id="signupForm">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" id="signupName" placeholder="Ej. Carlos Fuentes">
+            </div>
+            <div class="form-group">
+                <label>Cédula de Identidad</label>
+                <input type="text" id="signupCedula" placeholder="Ej. 12345678-9">
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" id="signupEmail" placeholder="carlos@correo.com">
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" id="signupPhone" placeholder="+56 9 1234 5678">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="signupPassword" placeholder="Crea una contraseña">
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%">Crear cuenta gratis</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL INICIAR SESIÓN -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-close="loginModal">&times;</span>
+        <h3><i class="fas fa-sign-in-alt"></i> Iniciar sesión</h3>
+        <p>Accede a tu cuenta Minalba con seguridad.</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" id="loginName" placeholder="Ej. Carlos Fuentes">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="loginPassword" placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%">Ingresar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ---------- MENÚ HAMBURGUESA (JS + CIERRE AL HACER CLICK EN ENLACE) ----------
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu() {
+        navLinks.classList.toggle('active');
+    }
+
+    function closeMenu() {
+        navLinks.classList.remove('active');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    // Cerrar menú si se selecciona un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    // En caso de redimensionar > 768px y menú abierto, lo cerramos para evitar conflictos
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // ---------- MODALES GLOBALES (abrir/cerrar) ----------
+    const signupModal = document.getElementById('signupModal');
+    const loginModal = document.getElementById('loginModal');
+
+    function openModal(modal) {
+        if (modal) modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(modal) {
+        if (modal) modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Abrir modales con botones hero
+    document.getElementById('openSignupModalBtn').addEventListener('click', () => openModal(signupModal));
+    document.getElementById('openLoginModalBtn').addEventListener('click', () => openModal(loginModal));
+
+    // Botones cerrar con X o backdrop (click fuera del contenido)
+    const closeButtons = document.querySelectorAll('[data-close]');
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const modalId = btn.getAttribute('data-close');
+            const modal = document.getElementById(modalId);
+            closeModal(modal);
+        });
+    });
+    // Cerrar modales haciendo clic en el fondo (overlay)
+    window.addEventListener('click', (e) => {
+        if (e.target === signupModal) closeModal(signupModal);
+        if (e.target === loginModal) closeModal(loginModal);
+    });
+
+    // ---------- BASE DE DATOS LOCALSTORAGE ----------
+    function getClients() {
+        return JSON.parse(localStorage.getItem('minalba_clients') || '[]');
+    }
+    function saveClients(clients) {
+        localStorage.setItem('minalba_clients', JSON.stringify(clients));
+    }
+
+    // Inicializar cliente demo si no existe
+    if (getClients().length === 0) {
+        saveClients([{ name: 'Usuario Demo', cedula: '11111111-1', email: 'demo@correo.com', phone: '12345678', password: '123', balance: 50000 }]);
+    }
+
+    // ---------- VALIDACIÓN FORMULARIO REGISTRO (ABRIR CUENTA) ----------
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('signupName').value.trim();
+        const cedula = document.getElementById('signupCedula').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+        const phone = document.getElementById('signupPhone').value.trim();
+        const password = document.getElementById('signupPassword').value.trim();
+        const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        
+        if (!name || !cedula || !email || !emailRegex.test(email) || !phone || !password) {
+            alert("❌ Por favor completa todos los campos correctamente.");
+            return;
+        }
+
+        const clients = getClients();
+        if (clients.find(c => c.cedula === cedula)) {
+            alert("❌ Ya existe una cuenta con esta cédula.");
+            return;
+        }
+
+        clients.push({ name, cedula, email, phone, password, balance: 0 });
+        saveClients(clients);
+
+        alert(`✅ ¡Gracias ${name}! Tu cuenta ha sido creada. Ahora puedes iniciar sesión.`);
+        signupForm.reset();
+        closeModal(signupModal);
+    });
+
+    // ---------- VALIDACIÓN INICIO SESIÓN ----------
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('loginName').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+        
+        if (!name || !password) {
+            alert("❌ Ingresa tu nombre completo y contraseña.");
+            return;
+        }
+
+        const clients = getClients();
+        const client = clients.find(c => c.name.toLowerCase() === name.toLowerCase() && c.password === password);
+
+        if (client) {
+            alert(`🔐 Bienvenido nuevamente ${name}.`);
+            localStorage.setItem('minalba_current_user', JSON.stringify(client));
+            setTimeout(() => {
+                window.location.assign('dashboard_cliente.html');
+            }, 100);
+        } else {
+            alert("❌ Nombre o contraseña incorrectos.");
+        }
+    });
+
+    // ---------- BOTONES "MÁS INFORMACIÓN" TARJETAS ----------
+    const infoButtons = document.querySelectorAll('.card-btn');
+    infoButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const productName = btn.getAttribute('data-product') || "este producto";
+            alert(`📘 Más información sobre ${productName}. Nuestros asesores te contactarán próximamente.`);
+        });
+    });
+
+    // ---------- FORMULARIO DE CONTACTO (sección contacto) ----------
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const msg = document.getElementById('contactMsg').value.trim();
+        if (!name || !email) {
+            alert("✉️ Por favor completa nombre y correo para enviar tu mensaje.");
+            return;
+        }
+        const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        if (!emailRegex.test(email)) {
+            alert("⚠️ El correo electrónico no es válido.");
+            return;
+        }
+        alert(`📩 ¡Gracias ${name}! Hemos recibido tu mensaje: "${msg.substring(0,60)}". Te responderemos a la brevedad.`);
+        contactForm.reset();
+    });
+</script>
+</body>
+</html>
